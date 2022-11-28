@@ -28,7 +28,12 @@ public class FileServer extends HttpServlet{
         //System.out.println(req.getServletPath());
         //System.out.println(req.getContextPath());
        System.out.println(req.getPathInfo());
+       System.out.println(req.getQueryString());
        String path = req.getPathInfo();
+       if("/query".equals(path)) {
+           path = "/"+req.getQueryString().split("=")[1];
+       }
+        System.out.println(path);
         try {
             URL url = new URL("http://localhost:8095"+path);
             URLConnection connection = url.openConnection();

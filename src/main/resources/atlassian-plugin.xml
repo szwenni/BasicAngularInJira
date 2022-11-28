@@ -23,11 +23,17 @@
   </web-resource>  
   <servlet name="My Servlet" i18n-name-key="my-servlet.name" key="my-servlet" class="com.sven.angularinjira.servlet.MyServlet"> 
     <description key="my-servlet.description">The My Servlet Plugin</description>  
-    <url-pattern>/myservlet</url-pattern> 
+    <url-pattern>/myservlet/*</url-pattern> 
   </servlet>  
   <servlet name="File Server" i18n-name-key="file-server.name" key="file-server" class="com.sven.angularinjira.servlet.FileServer"> 
     <description key="file-server.description">The File Server Plugin</description>  
     
     <url-pattern>/myservlet/dist/*</url-pattern> 
   </servlet>
+  <routing key="prettyurls-key" path="/servicedesk/niceportal">
+      <route from="/IT/dist/{s:.*}" to="/plugins/servlet/myservlet/dist/query"/>
+      <route from="/IT{s:.*}" to="/plugins/servlet/myservlet{s}"/>
+      
+    
+  </routing>
 </atlassian-plugin>
